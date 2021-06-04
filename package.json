@@ -1,0 +1,68 @@
+{
+  "name": "react-three-arnft",
+  "version": "0.1.0",
+  "description": "Image tracking with @kalwalt/jsartoolkit-nft and @react-three/fiber",
+  "main": "lib/index.js",
+  "scripts": {
+    "watch": "babel --watch src --out-dir lib",
+    "build": "babel src --out-dir lib --source-maps"
+  },
+  "engines": {
+    "node": ">= 14.16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-era/react-three-arnft.git"
+  },
+  "keywords": [
+    "react",
+    "react-three-fiber",
+    "jsartoolkit-nft",
+    "arnft",
+    "imagetracking",
+    "ar",
+    "three"
+  ],
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/j-era/react-three-arnft/issues"
+  },
+  "homepage": "https://github.com/j-era/react-three-arnft#readme",
+  "peerDependencies": {
+    "@kalwalt/jsartoolkit-nft": "^0.8.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "three": "^0.127.0",
+    "@react-three/fiber": "^6.2.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "@kalwalt/jsartoolkit-nft": "^0.8.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@react-three/fiber": "^6.2.2",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^8.1.0",
+    "core-js": "^3.10.0",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "prettier": "2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-refresh": "^0.10.0",
+    "three": "^0.127.0",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

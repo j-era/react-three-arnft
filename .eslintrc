@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "THREE": true
+  },
+  "rules": {
+    "react/prop-types": 0
+  }
+}
