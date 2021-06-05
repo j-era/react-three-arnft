@@ -68,7 +68,7 @@ export class ARNft {
       this.canvasProcess.height,
     )
 
-    this.renderer.setSize(sw, sh, false) // do not update css styles
+    this.renderer.setSize(sw, sh, false) // false -> do not update css styles
   }
 
   addMarker(url, root) {

@@ -22,7 +22,7 @@ const constraints = {
 const ARNftContext = createContext({})
 
 const ARNftProvider = ({ children, video, interpolationFactor }) => {
-  const { gl, camera, setSize } = useThree()
+  const { gl, camera } = useThree()
   const [arnft, setARNft] = useState(null)
   const arnftRef = useRef()
 
