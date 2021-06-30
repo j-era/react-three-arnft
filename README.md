@@ -4,7 +4,7 @@ Image tracking with [@kalwalt/jsartoolkit-nft](https://github.com/webarkit/jsart
 
 
 ```
-npm install github:j-era/react-three-arnft#v0.1.0
+npm install github:j-era/react-three-arnft#v0.1.2
 ```
 
 ## Usage
@@ -48,7 +48,6 @@ ReactDOM.render(
   children                                       
   arEnabled = true                   // `false` will disable AR and render children into regular r3f <Canvas />
   interpolationFactor = 1,           // increase to enable smoother but slower tracking
-  onCameraStreamReady = () => {},
 />
 ```
 
@@ -67,5 +66,7 @@ ReactDOM.render(
 
 ## ToDos
 - [ ] Support multiple NFT Markers: https://github.com/webarkit/jsartoolkitNFT/issues/32
-- [ ] Host example
+- [ ] NPM Module
 - [ ] CI Build
+- [ ] Host example
+- [ ] Demo Video/GIF
