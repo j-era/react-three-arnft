@@ -66,5 +66,6 @@ ReactDOM.render(
 - Start with the [example](./example) using webpack for bundling.
 
 ## ToDos
+- [ ] Support multiple NFT Markers: https://github.com/webarkit/jsartoolkitNFT/issues/32
 - [ ] Host example
 - [ ] CI Build
