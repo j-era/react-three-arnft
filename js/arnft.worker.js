@@ -85,7 +85,6 @@ function process() {
     }
 
     postMessage({
-      index: currentMarkerResult.data.index,
       type: "found",
       matrixGL_RH: JSON.stringify(currentMatrix.interpolated),
     })

@@ -23,7 +23,7 @@ export class ARNft {
 
     this.camera.matrixAutoUpdate = false
 
-    this.markerRoots = []
+    this.markerRoot = null
 
     this.canvasProcess = document.createElement("canvas")
     this.contextProcess = this.canvasProcess.getContext("2d")
@@ -74,7 +74,7 @@ export class ARNft {
   addMarker(url, root) {
     root.matrixAutoUpdate = false
 
-    this.markerRoots.push(root)
+    this.markerRoot = root
     this.worker.postMessage({ type: "addMarker", marker: "../" + url })
   }
 
@@ -144,20 +144,15 @@ export class ARNft {
   }
 
   onFound(msg) {
-    const { index, matrixGL_RH } = msg
+    const { matrixGL_RH } = msg
 
-    const markerRoot = this.markerRoots[index]
     const matrix = JSON.parse(matrixGL_RH)
 
-    markerRoot.visible = true
-    setMatrix(markerRoot.matrix, matrix)
+    this.markerRoot.visible = true
+    setMatrix(this.markerRoot.matrix, matrix)
   }
 
   onLost(msg) {
-    const { index } = msg
-
-    const markerRoot = this.markerRoots[index]
-
-    markerRoot.visible = false
+    this.markerRoot.visible = false
   }
 }
