@@ -5,7 +5,7 @@ const workerScript = "./js/arnft.worker.js"
 
 export class ARNft {
   constructor(
-    cameraParaUrl,
+    cameraParamUrl,
     video,
     renderer,
     camera,
@@ -15,7 +15,7 @@ export class ARNft {
     this.inputWidth = video.videoWidth
     this.inputHeight = video.videoHeight
 
-    this.cameraParaUrl = cameraParaUrl
+    this.cameraParamUrl = cameraParamUrl
     this.video = video
     this.renderer = renderer
     this.camera = camera
@@ -36,7 +36,7 @@ export class ARNft {
       type: "load",
       pw: this.pw,
       ph: this.ph,
-      camera_para: this.cameraParaUrl,
+      cameraParamUrl: this.cameraParamUrl,
       interpolationFactor: interpolationFactor,
     })
   }
@@ -75,7 +75,7 @@ export class ARNft {
     root.matrixAutoUpdate = false
 
     this.markerRoots.push(root)
-    this.worker.postMessage({ type: "add", marker: "../" + url })
+    this.worker.postMessage({ type: "addMarker", marker: "../" + url })
   }
 
   process() {
@@ -119,10 +119,11 @@ export class ARNft {
         this.onLoaded(msg)
         break
       }
-      case "endLoading": {
+      case "markerAdded": {
         if (msg.end === true) {
           console.log(msg)
         }
+        this.process()
         break
       }
       case "found": {
@@ -135,8 +136,11 @@ export class ARNft {
         this.onLost(msg)
         break
       }
+      case "processNext": {
+        this.process()
+        break
+      }
     }
-    this.process()
   }
 
   onFound(msg) {

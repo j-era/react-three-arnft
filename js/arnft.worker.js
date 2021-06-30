@@ -18,7 +18,7 @@ self.onmessage = function (e) {
       load(msg)
       return
     }
-    case "add": {
+    case "addMarker": {
       addMarker(msg)
       return
     }
@@ -30,29 +30,18 @@ self.onmessage = function (e) {
 }
 
 async function load(msg) {
-  console.log("Loading marker at: ", msg.marker)
-  console.log("Loading camera at: ", msg.camera_para)
+  console.log("Loading camera at: ", msg.cameraParamUrl)
   console.log("Setting interpolation factor to: ", msg.interpolationFactor)
 
   try {
     arController = await ARToolkitNFT.ARControllerNFT.initWithDimensions(
       msg.pw,
       msg.ph,
-      msg.camera_para,
+      msg.cameraParamUrl,
     )
 
     arController.addEventListener("getNFTMarker", function (e) {
-      currentMarkerResult = {
-        type: "found",
-        data: e.data,
-      }
-    })
-
-    arController.addEventListener("lostNFTMarker", function (e) {
-      currentMarkerResult = {
-        type: "lost",
-        data: e.data,
-      }
+      currentMarkerResult = e.data
     })
 
     interpolationFactor = msg.interpolationFactor
@@ -73,7 +62,7 @@ function addMarker(msg) {
       arController.trackNFTMarkerId(nft.id)
       console.log("loadNFTMarker -> ", nft.id)
       console.log("nftMarker struct: ", nft)
-      postMessage({ type: "endLoading", end: true })
+      postMessage({ type: "markerAdded", end: true })
     })
     .catch(function (err) {
       console.error("Error in loading marker on Worker", err)
@@ -81,30 +70,32 @@ function addMarker(msg) {
 }
 
 function process() {
-  currentMarkerResult = null
-
   if (arController && arController.process) {
     arController.process(nextImageData)
   }
 
   if (currentMarkerResult) {
-    const worldMatrix = currentMarkerResult.data.matrixGL_RH
+    const matrix = currentMarkerResult.matrixGL_RH
 
-    for (let i = 0; i < worldMatrix.length; i++) {
-      currentMatrix.delta[i] = worldMatrix[i] - currentMatrix.interpolated[i]
+    for (let i = 0; i < matrix.length; i++) {
+      currentMatrix.delta[i] = matrix[i] - currentMatrix.interpolated[i]
       currentMatrix.interpolated[i] =
         currentMatrix.interpolated[i] +
         currentMatrix.delta[i] / interpolationFactor
     }
 
     postMessage({
-      type: currentMarkerResult.type,
       index: currentMarkerResult.data.index,
+      type: "found",
       matrixGL_RH: JSON.stringify(currentMatrix.interpolated),
     })
   } else {
-    postMessage({ type: "not found" })
+    postMessage({
+      type: "lost",
+    })
   }
 
-  nextImageData = null
+  currentMarkerResult = null
+
+  postMessage({ type: "processNext" })
 }
