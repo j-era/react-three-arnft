@@ -10,7 +10,6 @@ const ARCanvas = ({
   arEnabled = true,
   interpolationFactor = 1,
   children,
-  onCameraStreamReady = () => {},
   ...props
 }) => {
   const ref = useRef()
