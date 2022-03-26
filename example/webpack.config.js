@@ -30,7 +30,7 @@ module.exports = (_, { mode }) => ({
       patterns: [
         { from: "data", to: "data" },
         { from: "node_modules/react-three-arnft/js", to: "js" },
-        { from: "node_modules/@kalwalt/jsartoolkit-nft/dist", to: "js" },
+        { from: "node_modules/@webarkit/jsartoolkit-nft/dist", to: "js" },
       ],
     }),
   ].filter(Boolean),

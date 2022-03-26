@@ -12,13 +12,13 @@
     "node": ">= 14.16.x"
   },
   "dependencies": {
-    "@kalwalt/jsartoolkit-nft": "^0.9.1",
-    "@react-three/drei": "^7.0.5",
-    "@react-three/fiber": "^7.0.2",
+    "@react-three/drei": "^8.19.4",
+    "@react-three/fiber": "^7.0.26",
+    "@webarkit/jsartoolkit-nft": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-three-arnft": "github:j-era/react-three-arnft#v0.1.2",
-    "three": "^0.130.0"
+    "three": "^0.139.0"
   },
   "license": "LGPL-3.0",
   "devDependencies": {
