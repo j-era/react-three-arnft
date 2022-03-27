@@ -23,7 +23,10 @@ const ARNftContext = createContext({})
 
 const ARNftProvider = ({ children, video, interpolationFactor }) => {
   const { gl, camera } = useThree()
+
   const [arnft, setARNft] = useState(null)
+
+  const markersRef = useRef([])
   const arnftRef = useRef()
 
   const onLoaded = useCallback((msg) => {
@@ -61,9 +64,17 @@ const ARNftProvider = ({ children, video, interpolationFactor }) => {
     }
   }, [])
 
-  const value = useMemo(() => {
-    return { arnft: arnft }
+  useEffect(() => {
+    if (!arnft) {
+      return
+    }
+
+    arnft.loadMarkers(markersRef.current)
   }, [arnft])
+
+  const value = useMemo(() => {
+    return { arnft: arnft, markersRef }
+  }, [arnft, markersRef])
 
   return <ARNftContext.Provider value={value}>{children}</ARNftContext.Provider>
 }
@@ -73,4 +84,17 @@ const useARNft = () => {
   return useMemo(() => ({ ...arValue }), [arValue])
 }
 
-export { ARNftProvider, useARNft, ARNftContext }
+const useNftMarker = (url) => {
+  const ref = useRef()
+
+  const { markersRef } = useARNft()
+
+  useEffect(() => {
+    const newMarkers = [...markersRef.current, { url, root: ref.current }]
+    markersRef.current = newMarkers
+  }, [])
+
+  return ref
+}
+
+export { ARNftProvider, useARNft, useNftMarker, ARNftContext }

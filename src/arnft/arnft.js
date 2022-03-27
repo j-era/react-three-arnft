@@ -23,7 +23,7 @@ export class ARNft {
 
     this.camera.matrixAutoUpdate = false
 
-    this.markerRoot = null
+    this.markers = []
 
     this.canvasProcess = document.createElement("canvas")
     this.contextProcess = this.canvasProcess.getContext("2d")
@@ -71,11 +71,14 @@ export class ARNft {
     this.renderer.setSize(sw, sh, false) // false -> do not update css styles
   }
 
-  addMarker(url, root) {
-    root.matrixAutoUpdate = false
+  loadMarkers(markers) {
+    markers.forEach((marker) => (marker.root.matrixAutoUpdate = false))
 
-    this.markerRoot = root
-    this.worker.postMessage({ type: "addMarker", marker: "../" + url })
+    this.markers = markers
+    this.worker.postMessage({
+      type: "loadMarkers",
+      markers: markers.map((marker) => "../" + marker.url),
+    })
   }
 
   process() {
@@ -119,11 +122,15 @@ export class ARNft {
         this.onLoaded(msg)
         break
       }
-      case "markerAdded": {
+      case "markersLoaded": {
         if (msg.end === true) {
           console.log(msg)
         }
         this.process()
+        break
+      }
+      case "markerInfos": {
+        console.log(msg.markers)
         break
       }
       case "found": {
@@ -144,15 +151,19 @@ export class ARNft {
   }
 
   onFound(msg) {
-    const { matrixGL_RH } = msg
+    const matrix = JSON.parse(msg.matrixGL_RH)
+    const index = JSON.parse(msg.index)
 
-    const matrix = JSON.parse(matrixGL_RH)
+    setMatrix(this.markers[index].root.matrix, matrix)
 
-    this.markerRoot.visible = true
-    setMatrix(this.markerRoot.matrix, matrix)
+    this.markers.forEach((marker, i) => {
+      marker.root.visible = i === index
+    })
   }
 
   onLost(msg) {
-    this.markerRoot.visible = false
+    this.markers.forEach((marker) => {
+      marker.root.visible = false
+    })
   }
 }

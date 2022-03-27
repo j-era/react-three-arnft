@@ -18,8 +18,8 @@ self.onmessage = function (e) {
       load(msg)
       return
     }
-    case "addMarker": {
-      addMarker(msg)
+    case "loadMarkers": {
+      loadMarkers(msg.markers)
       return
     }
     case "process": {
@@ -55,18 +55,28 @@ async function load(msg) {
   }
 }
 
-function addMarker(msg) {
-  arController
-    .loadNFTMarker(msg.marker)
-    .then(function (nft) {
-      arController.trackNFTMarkerId(nft.id)
-      console.log("loadNFTMarker -> ", nft.id)
-      console.log("nftMarker struct: ", nft)
-      postMessage({ type: "markerAdded", end: true })
-    })
-    .catch(function (err) {
+function loadMarkers(markers) {
+  arController.loadNFTMarkers(
+    markers,
+    function (ids) {
+      const markers = ids.map((id, index) => {
+        arController.trackNFTMarkerId(id)
+        return arController.getNFTData(arController.id, index)
+      })
+
+      postMessage({
+        type: "markerInfos",
+        markers,
+      })
+
+      console.log("loadNFTMarkers -> ", ids)
+
+      postMessage({ type: "markersLoaded", end: true })
+    },
+    function (err) {
       console.error("Error in loading marker on Worker", err)
-    })
+    },
+  )
 }
 
 function process() {
@@ -86,6 +96,7 @@ function process() {
 
     postMessage({
       type: "found",
+      index: JSON.stringify(currentMarkerResult.index),
       matrixGL_RH: JSON.stringify(currentMatrix.interpolated),
     })
   } else {

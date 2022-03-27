@@ -1,15 +1,8 @@
-import React, { useEffect, useRef } from "react"
-import { useARNft } from "../arnftContext"
+import React from "react"
+import { useNftMarker } from "../arnftContext"
 
 const NFTMarker = ({ children, url }) => {
-  const { arnft } = useARNft()
-  const ref = useRef()
-
-  useEffect(() => {
-    if (!arnft) return
-
-    arnft.addMarker(url, ref.current)
-  }, [arnft, url])
+  const ref = useNftMarker(url)
 
   return (
     <group ref={ref} visible={false}>
