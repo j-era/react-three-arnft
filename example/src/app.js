@@ -3,7 +3,7 @@ import { ARCanvas, NFTMarker } from "react-three-arnft"
 
 const marker = {
   width: 200,
-  height: 220,
+  height: 200,
 }
 
 const App = () => {
@@ -15,14 +15,19 @@ const App = () => {
         gl.setSize(window.innerWidth, window.innerHeight)
       }}
     >
-      <NFTMarker url={"data/marker/pinball"}>
-        <group position={[marker.width * 0.5, marker.height * 0.5, 0]}>
-          <mesh scale={[marker.width, marker.height, 10]}>
-            <boxBufferGeometry args={[1, 1, 1]} />
-            <meshNormalMaterial opacity={0.5} transparent={true} />
-          </mesh>
-        </group>
+      <NFTMarker url={"data/marker/gaelle"}>
+        <mesh scale={[marker.width, marker.height, 10]}>
+          <boxBufferGeometry args={[1, 1, 1]} />
+          <meshNormalMaterial opacity={0.5} transparent={true} />
+        </mesh>
       </NFTMarker>
+      <NFTMarker url={"data/marker/pinball"}>
+        <mesh scale={[marker.width, marker.height, 10]}>
+          <boxBufferGeometry args={[1, 1, 1]} />
+          <meshNormalMaterial opacity={0.5} transparent={true} />
+        </mesh>
+      </NFTMarker>
+      
       <ambientLight />
     </ARCanvas>
   )

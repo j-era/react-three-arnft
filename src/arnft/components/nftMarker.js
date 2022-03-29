@@ -6,7 +6,7 @@ const NFTMarker = ({ children, url }) => {
 
   return (
     <group ref={ref} visible={false}>
-      {children}
+      <group name="center">{children}</group>
     </group>
   )
 }

@@ -130,7 +130,7 @@ export class ARNft {
         break
       }
       case "markerInfos": {
-        console.log(msg.markers)
+        this.onMarkerInfos(msg.markers)
         break
       }
       case "found": {
@@ -148,6 +148,16 @@ export class ARNft {
         break
       }
     }
+  }
+
+  onMarkerInfos(markerInfos) {
+    console.log("markerInfos", markerInfos)
+    markerInfos.forEach((markerInfo) => {
+      this.markers[markerInfo.id].root.children[0].position.x =
+        ((markerInfo.width / markerInfo.dpi) * 2.54 * 10) / 2.0
+      this.markers[markerInfo.id].root.children[0].position.y =
+        ((markerInfo.height / markerInfo.dpi) * 2.54 * 10) / 2.0
+    })
   }
 
   onFound(msg) {
