@@ -10,6 +10,7 @@ const webpack = require("webpack")
 module.exports = (_, { mode }) => ({
   entry: "./src/index.js",
   devServer: {
+    server: "https",
     host: "0.0.0.0",
     hot: true
   },

@@ -9,7 +9,7 @@ const marker = {
 const App = () => {
   return (
     <ARCanvas
-      interpolationFactor={24}
+      interpolationFactor={1}
       dpr={window.devicePixelRatio}
       onCreated={({ gl }) => {
         gl.setSize(window.innerWidth, window.innerHeight)
