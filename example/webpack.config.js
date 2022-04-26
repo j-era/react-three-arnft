@@ -11,6 +11,7 @@ module.exports = (_, { mode }) => ({
   entry: "./src/index.js",
   devServer: {
     host: "0.0.0.0",
+    hot: true
   },
   resolve: {
     alias: {
@@ -23,7 +24,6 @@ module.exports = (_, { mode }) => ({
     },
   },
   plugins: [
-    mode === "development" && new webpack.HotModuleReplacementPlugin(),
     mode === "development" && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({ template: "src/index.html" }),
     new CopyPlugin({
