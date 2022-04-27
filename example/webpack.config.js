@@ -19,8 +19,6 @@ module.exports = (_, { mode }) => ({
       three: path.resolve("./node_modules/three"),
       react: path.resolve("./node_modules/react"),
       "react-dom": path.resolve("./node_modules/react-dom"),
-      "react-redux": path.resolve("./node_modules/react-redux"),
-      "styled-components": path.resolve("./node_modules/styled-components"),
       "@react-three/fiber": path.resolve("./node_modules/@react-three/fiber"),
     },
   },
