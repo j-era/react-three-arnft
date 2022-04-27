@@ -21,7 +21,7 @@ const constraints = {
 
 const ARNftContext = createContext({})
 
-const ARNftProvider = ({ children, video, interpolationFactor }) => {
+const ARNftProvider = ({ children, video, interpolationFactor, arEnabled }) => {
   const { gl, camera } = useThree()
 
   const [arnft, setARNft] = useState(null)
@@ -36,6 +36,8 @@ const ARNftProvider = ({ children, video, interpolationFactor }) => {
   }, [])
 
   useEffect(async () => {
+    if (!arEnabled) return
+
     const stream = await navigator.mediaDevices.getUserMedia(constraints)
     video.current.srcObject = stream
     video.current.onloadedmetadata = async (event) => {
@@ -73,8 +75,8 @@ const ARNftProvider = ({ children, video, interpolationFactor }) => {
   }, [arnft])
 
   const value = useMemo(() => {
-    return { arnft: arnft, markersRef }
-  }, [arnft, markersRef])
+    return { arnft: arnft, markersRef, arEnabled }
+  }, [arnft, markersRef, arEnabled])
 
   return <ARNftContext.Provider value={value}>{children}</ARNftContext.Provider>
 }
