@@ -9,12 +9,12 @@
     "watch": "webpack serve --mode=development"
   },
   "engines": {
-    "node": ">= 14.16.x"
+    "node": ">= 16.14.2"
   },
   "dependencies": {
     "@react-three/drei": "^8.19.4",
     "@react-three/fiber": "^7.0.26",
-    "@webarkit/jsartoolkit-nft": "^1.1.0",
+    "@webarkit/jsartoolkit-nft": "github:j-era/jsartoolkitNFT#b6a9bec476202aba955ce887ab29ef058802261a",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-three-arnft": "github:j-era/react-three-arnft#v0.2.0",

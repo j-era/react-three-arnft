@@ -77,7 +77,7 @@ export class ARNft {
     this.markers = markers
     this.worker.postMessage({
       type: "loadMarkers",
-      markers: markers.map((marker) => "../" + marker.url),
+      markers: markers.map((marker) => marker.url),
     })
   }
 

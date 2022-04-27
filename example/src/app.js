@@ -15,13 +15,13 @@ const App = () => {
         gl.setSize(window.innerWidth, window.innerHeight)
       }}
     >
-      <NFTMarker url={"data/marker/gaelle"}>
+      <NFTMarker url={"../data/marker/gaelle"}>
         <mesh scale={[marker.width, marker.height, 10]}>
           <boxBufferGeometry args={[1, 1, 1]} />
           <meshNormalMaterial opacity={0.5} transparent={true} />
         </mesh>
       </NFTMarker>
-      <NFTMarker url={"data/marker/pinball"}>
+      <NFTMarker url={"../data/marker/pinball"}>
         <mesh scale={[marker.width, marker.height, 10]}>
           <boxBufferGeometry args={[1, 1, 1]} />
           <meshNormalMaterial opacity={0.5} transparent={true} />
