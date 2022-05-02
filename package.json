@@ -30,7 +30,7 @@
   "homepage": "https://github.com/j-era/react-three-arnft#readme",
   "peerDependencies": {
     "@react-three/fiber": "^7.0.2",
-    "@webarkit/jsartoolkit-nft": "github:j-era/jsartoolkitNFT#b6a9bec476202aba955ce887ab29ef058802261a",
+    "@webarkit/jsartoolkit-nft": "github:j-era/jsartoolkitNFT#dcdfecb6fd1f18ff3714fa3186d29139c7f0ff64",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
