@@ -35,34 +35,38 @@ const ARNftProvider = ({ children, video, interpolationFactor, arEnabled }) => {
     setARNft(arnftRef.current)
   }, [])
 
-  useEffect(async () => {
-    if (!arEnabled) return
+  useEffect(() => {
+    async function init() {
+      const stream = await navigator.mediaDevices.getUserMedia(constraints)
+      video.current.srcObject = stream
+      video.current.onloadedmetadata = async (event) => {
+        console.log(event.srcElement.videoWidth)
+        console.log(event.srcElement.videoHeight)
 
-    const stream = await navigator.mediaDevices.getUserMedia(constraints)
-    video.current.srcObject = stream
-    video.current.onloadedmetadata = async (event) => {
-      console.log(event.srcElement.videoWidth)
-      console.log(event.srcElement.videoHeight)
+        video.current.play()
 
-      video.current.play()
+        gl.domElement.width = event.srcElement.videoWidth
+        gl.domElement.height = event.srcElement.videoHeight
 
-      gl.domElement.width = event.srcElement.videoWidth
-      gl.domElement.height = event.srcElement.videoHeight
+        gl.domElement.style.objectFit = "cover"
 
-      gl.domElement.style.objectFit = "cover"
+        camera.updateProjectionMatrix()
 
-      camera.updateProjectionMatrix()
+        const arnft = new ARNft(
+          "../data/camera_para.dat",
+          video.current,
+          gl,
+          camera,
+          onLoaded,
+          interpolationFactor,
+        )
 
-      const arnft = new ARNft(
-        "../data/camera_para.dat",
-        video.current,
-        gl,
-        camera,
-        onLoaded,
-        interpolationFactor,
-      )
+        arnftRef.current = arnft
+      }
+    }
 
-      arnftRef.current = arnft
+    if (arEnabled) {
+      init()
     }
   }, [])
 
@@ -75,7 +79,7 @@ const ARNftProvider = ({ children, video, interpolationFactor, arEnabled }) => {
   }, [arnft])
 
   const value = useMemo(() => {
-    return { arnft: arnft, markersRef, arEnabled }
+    return { arnft, markersRef, arEnabled }
   }, [arnft, markersRef, arEnabled])
 
   return <ARNftContext.Provider value={value}>{children}</ARNftContext.Provider>
