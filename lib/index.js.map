@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":"AAAA,cAAc,SAAd","sourcesContent":["export * from \"./arnft\"\n"],"file":"index.js"}
+{"version":3,"file":"index.js","names":[],"sources":["../src/index.js"],"sourcesContent":["export * from \"./arnft\"\n"],"mappings":"AAAA,cAAc,SAAd"}
