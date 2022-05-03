@@ -17,7 +17,7 @@
     "@webarkit/jsartoolkit-nft": "github:webarkit/jsartoolkitNFT#2e79da16579c068c425b6d9e3059c2ce35b39646",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-three-arnft": "github:j-era/react-three-arnft#78fe20cbe6508a4838d2d795c5aa89a4ef1493e1",
+    "react-three-arnft": "github:j-era/react-three-arnft#245bcdc9ea730f352549f7a4fe5915c8897ca6e7",
     "three": "^0.139.0"
   },
   "license": "LGPL-3.0",
