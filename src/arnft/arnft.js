@@ -37,7 +37,7 @@ export class ARNft {
       pw: this.pw,
       ph: this.ph,
       cameraParamUrl: this.cameraParamUrl,
-      interpolationFactor: interpolationFactor,
+      interpolationFactor,
     })
   }
 
