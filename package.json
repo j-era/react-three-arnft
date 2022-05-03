@@ -8,7 +8,7 @@
     "build": "babel src --out-dir lib --source-maps"
   },
   "engines": {
-    "node": ">= 14.16.x"
+    "node": ">= 16.15.x"
   },
   "repository": {
     "type": "git",
@@ -31,27 +31,27 @@
   "peerDependencies": {
     "@react-three/fiber": "^7.0.2",
     "@webarkit/jsartoolkit-nft": "github:webarkit/jsartoolkitNFT#2e79da16579c068c425b6d9e3059c2ce35b39646",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.13.13",
-    "@react-three/fiber": "^7.0.26",
-    "core-js": "^3.10.0",
-    "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@react-three/fiber": "^8.0.12",
+    "core-js": "^3.22.4",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "2.3.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "prettier": "2.6.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }
