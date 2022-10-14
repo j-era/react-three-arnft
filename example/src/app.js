@@ -11,7 +11,7 @@ const App = () => {
     >
       <NFTMarker url={["../data/marker/pinball.fset", "../data/marker/pinball.fset3", "../data/marker/pinball.iset"]}>
         <mesh scale={[200, 200, 10]}>
-          <boxBufferGeometry args={[1, 1, 1]} />
+          <boxGeometry args={[1, 1, 1]} />
           <meshNormalMaterial opacity={0.5} transparent={true} />
         </mesh>
       </NFTMarker>
