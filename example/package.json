@@ -1,6 +1,5 @@
 {
   "name": "react-three-arnft-example",
-  "version": "0.1.0",
   "description": "Example using https://github.com/j-era/react-three-arnft",
   "main": "src/index.js",
   "scripts": {
