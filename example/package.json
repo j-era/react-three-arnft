@@ -14,7 +14,7 @@
   "dependencies": {
     "@react-three/drei": "^9.34.4",
     "@react-three/fiber": "^8.8.10",
-    "@webarkit/jsartoolkit-nft": "github:webarkit/jsartoolkitNFT#2e79da16579c068c425b6d9e3059c2ce35b39646",
+    "@webarkit/jsartoolkit-nft": "^1.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-three-arnft": "file:..",
