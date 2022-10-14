@@ -26,7 +26,7 @@ ReactDOM.render(
   >
     <NFTMarker url={"data/marker/pinball"}>
       <mesh scale={[100, 100, 100]}>
-        <boxBufferGeometry args={[1, 1, 1]} />
+        <boxGeometry args={[1, 1, 1]} />
         <meshNormalMaterial opacity={0.5} transparent={true} />
       </mesh>
     </NFTMarker>
