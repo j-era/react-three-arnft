@@ -17,13 +17,7 @@ import React from "react"
 import { ARCanvas, NFTMarker } from "react-three-arnft"
 
 ReactDOM.render(
-  <ARCanvas
-    interpolationFactor={24}
-    dpr={window.devicePixelRatio}
-    onCreated={({ gl }) => {
-      gl.setSize(window.innerWidth, window.innerHeight)
-    }}
-  >
+  <ARCanvas interpolationFactor={24}>
     <NFTMarker url={"data/marker/pinball"}>
       <mesh scale={[100, 100, 100]}>
         <boxGeometry args={[1, 1, 1]} />
