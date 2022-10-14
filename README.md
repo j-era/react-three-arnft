@@ -3,7 +3,7 @@
 Image tracking with [@kalwalt/jsartoolkit-nft](https://github.com/webarkit/jsartoolkitNFT) and [react-three-fiber](https://github.com/pmndrs/react-three-fiber).
 
 ```
-npm install github:j-era/react-three-arnft#v0.2.0
+npm install github:j-era/react-three-arnft#v0.3.0
 ```
 
 ## Usage
